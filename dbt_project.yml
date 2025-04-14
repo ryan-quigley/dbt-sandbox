@@ -1,11 +1,11 @@
 config-version: 2
 
-name: "jaffle_shop"
-version: "3.0.0"
+name: dbt_sandbox_se
+version: "0.0.1"
 require-dbt-version: ">=1.5.0"
 
 dbt-cloud:
-  project-id: 275557 # Put your project id here
+    project-id: 70403103985012
 
 profile: default # Put your profile here
 
@@ -25,11 +25,11 @@ vars:
   "dbt_date:time_zone": "America/Los_Angeles"
 
 seeds:
-  jaffle_shop:
+  dbt_sandbox_se:
     +schema: raw
 
 models:
-  jaffle_shop:
+  dbt_sandbox_se:
     staging:
       +materialized: view
     marts:
