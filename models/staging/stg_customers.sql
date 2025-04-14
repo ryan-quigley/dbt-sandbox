@@ -2,8 +2,12 @@ with
 
 source as (
 
-    select * from {{ source('ecom', 'customers') }}
-
+    select * 
+    from {{ source('ecom', 'customers') }}
+    where id not in (
+        select id
+        from {{ ref('seed_exclude_customers') }}
+    )
 ),
 
 renamed as (
