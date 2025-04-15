@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Action
-        uses: atlanhq/action-action@v1
+        uses: atlanhq/action-action@v1.0.1
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ATLAN_INSTANCE_URL: ${{secrets.ATLAN_INSTANCE_URL}}
