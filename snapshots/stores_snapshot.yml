@@ -1,0 +1,9 @@
+snapshots:
+  - name: stores_snapshot
+    relation: source('ecom', 'stores')
+    config:
+      schema: snapshots
+      database: dbt_sandbox_se
+      unique_key: id
+      strategy: check
+      check_cols: [name]
