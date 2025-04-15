@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * 
+    select *
     from {{ source('ecom', 'customers') }}
     where id not in (
         select id

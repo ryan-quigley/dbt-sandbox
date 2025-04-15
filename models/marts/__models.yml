@@ -1,3 +1,5 @@
+version: 2
+
 models:
   - name: time_spine_daily
     description: A time spine with one row per day, ranging from 2020-01-01 to 2039-12-31.
@@ -6,3 +8,18 @@ models:
     columns:
       - name: date_day
         granularity: day
+
+exposures:
+  - name: order_validation
+    label: Sigma Order Validation
+    type: dashboard
+    maturity: low
+    url: https://app.sigmacomputing.com/atlan-partner/workbook/Order-Validation-5LmTGIjXsUmMF49WfNOEVZ
+    description: >
+      Validate orders that do not have a customer associated with them.
+    depends_on:
+      - ref('orders')
+      - ref('customers')
+    owner:
+      name: Ryan Quigley
+      email: ryan.quigley@atlan.com
