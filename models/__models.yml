@@ -23,3 +23,11 @@ exposures:
     owner:
       name: Ryan Quigley
       email: ryan.quigley@atlan.com
+
+groups:
+  - name: analytics_engineering
+    owner:
+      name: Ryan Quigley
+  - name: business_intelligence
+    owner:
+      name: Ryan Quigley

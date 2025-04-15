@@ -32,5 +32,15 @@ models:
   dbt_sandbox_se:
     staging:
       +materialized: view
+      +group: analytics_engineering
     marts:
       +materialized: table
+      +group: analytics_engineering
+
+semantic-models:
+  dbt_sandbox_se:
+    +group: business_intelligence
+
+metrics:
+  dbt_sandbox_se:
+    +group: business_intelligence
