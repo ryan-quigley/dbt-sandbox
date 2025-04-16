@@ -35,6 +35,8 @@ order_items_summary as (
 
     from order_items
 
+    where order_id is not null
+
     group by 1
 
 ),
