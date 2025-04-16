@@ -75,3 +75,4 @@ customer_order_count as (
 )
 
 select * from customer_order_count
+where order_id is not null
