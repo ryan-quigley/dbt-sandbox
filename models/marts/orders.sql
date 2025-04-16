@@ -34,7 +34,7 @@ order_items_summary as (
         ) as count_drink_items
 
     from order_items
-
+    where order_id is not null
     group by 1
 
 ),
