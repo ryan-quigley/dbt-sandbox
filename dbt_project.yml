@@ -36,6 +36,13 @@ models:
     marts:
       +materialized: table
       +group: analytics_engineering
+      +meta:
+        atlan:
+          attributes:
+            certificateStatus: VERIFIED
+            certificateStatusMessage: >
+              Verified through automation.
+
 
 semantic-models:
   dbt_sandbox_se:
