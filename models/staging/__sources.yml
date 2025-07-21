@@ -4,16 +4,16 @@ sources:
   - name: ecom
     schema: raw
     description: E-commerce data for the Jaffle Shop
-    freshness:
-      warn_after:
-        count: 24
-        period: hour
     tables:
       - name: customers
         description: One record per person who has purchased one or more items
       - name: orders
         description: One record per order (consisting of one or more order items)
         loaded_at_field: ordered_at
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 30, period: day}
       - name: order_items
         description: Items included in an order
       - name: stores

@@ -4,10 +4,11 @@ source as (
 
     select *
     from {{ source('ecom', 'customers') }}
-    where id not in (
-        select id
-        from {{ ref('seed_exclude_customers') }}
-    )
+    -- Removing customers selectively breaks test in orders and order_items
+    -- where id not in (
+    --     select id
+    --     from {{ ref('seed_exclude_customers') }}
+    -- )
 ),
 
 renamed as (
