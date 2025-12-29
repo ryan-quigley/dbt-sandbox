@@ -25,7 +25,7 @@ renamed as (
 
         ---------- timestamps
         convert_timezone('UTC', 'America/Los_Angeles', ordered_at) as ordered_at_pt,
-        {{ dbt.date_trunc('day','ordered_at') }} as ordered_date
+        {{ dbt.date_trunc('day','ordered_at_pt') }} as ordered_date
 
     from source
 
