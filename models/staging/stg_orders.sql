@@ -24,7 +24,8 @@ renamed as (
         {{ cents_to_dollars('order_total') }} as order_total,
 
         ---------- timestamps
-        {{ dbt.date_trunc('day','ordered_at') }} as ordered_at
+        convert_timezone('UTC', 'America/Los_Angeles', ordered_at) as ordered_at_pt,
+        {{ dbt.date_trunc('day','ordered_at') }} as ordered_date
 
     from source
 
