@@ -31,4 +31,7 @@ renamed as (
 
 )
 
-select * from renamed
+select 
+*
+, NULL AS test_empty_column
+from renamed
