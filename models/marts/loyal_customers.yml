@@ -1,0 +1,132 @@
+version: 2
+
+models:
+  - name: loyal_customers
+    description: >
+      A comprehensive view of customer loyalty, combining order history, spending patterns,
+      and engagement metrics to classify customers into loyalty tiers. One row per customer.
+    
+    columns:
+      - name: customer_id
+        description: The unique identifier for each customer
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_name
+        description: The customer's full name
+        tests:
+          - not_null
+      
+      - name: customer_type
+        description: Indicates if the customer is 'new' or 'returning'
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['new', 'returning']
+      
+      - name: count_lifetime_orders
+        description: Total number of orders placed by the customer
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      
+      - name: lifetime_spend_pretax
+        description: Total amount spent by the customer before tax
+        tests:
+          - not_null
+      
+      - name: lifetime_spend
+        description: Total amount spent by the customer including tax
+        tests:
+          - not_null
+      
+      - name: first_ordered_at
+        description: Timestamp of the customer's first order
+        tests:
+          - not_null
+      
+      - name: last_ordered_at
+        description: Timestamp of the customer's most recent order
+        tests:
+          - not_null
+      
+      - name: days_since_first_order
+        description: Number of days between the customer's first order and current date
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      
+      - name: days_since_last_order
+        description: Number of days between the customer's last order and current date
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      
+      - name: avg_order_value
+        description: Average amount spent per order (pre-tax)
+        tests:
+          - not_null
+      
+      - name: orders_per_month
+        description: Average number of orders placed per month since first order
+        tests:
+          - not_null
+      
+      - name: order_count_score
+        description: Loyalty score component based on total number of orders (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      
+      - name: spend_score
+        description: Loyalty score component based on total spend (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      
+      - name: frequency_score
+        description: Loyalty score component based on order frequency (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      
+      - name: recency_score
+        description: Loyalty score component based on days since last order (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      
+      - name: loyalty_score
+        description: Overall loyalty score combining all components (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      
+      - name: loyalty_tier
+        description: Customer loyalty tier (Bronze, Silver, Gold, or Diamond) based on loyalty score
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Bronze', 'Silver', 'Gold', 'Diamond'] 
