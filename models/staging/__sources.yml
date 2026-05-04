@@ -12,19 +12,19 @@ sources:
         description: One record per person who has purchased one or more items
       - name: orders
         description: One record per order (consisting of one or more order items)
-        loaded_at_field: ordered_at
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 30, period: day}
+          loaded_at_field: ordered_at
       - name: order_items
         description: Items included in an order
       - name: stores
-        loaded_at_field: opened_at
         config:
           freshness:
             warn_after: {count: 1, period: hour}
             error_after: {count: 24, period: hour}
+          loaded_at_field: opened_at
       - name: products
         description: One record per SKU for items sold in stores
       - name: supplies

@@ -5,7 +5,7 @@ version: "0.0.1"
 require-dbt-version: ">=1.5.0"
 
 dbt-cloud:
-    project-id: 70403103985012
+  project-id: 70403103985012
 
 profile: default # Put your profile here
 
@@ -15,8 +15,6 @@ test-paths: ["data-tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
-target-path: "target"
 clean-targets:
   - "target"
   - "dbt_packages"
@@ -51,3 +49,5 @@ semantic-models:
 metrics:
   dbt_sandbox_se:
     +group: business_intelligence
+flags:
+  require_generic_test_arguments_property: true
